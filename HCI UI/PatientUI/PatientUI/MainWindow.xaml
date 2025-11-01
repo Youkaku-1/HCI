@@ -1,0 +1,73 @@
+﻿<Window x:Class="TuioPatientUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Patient Medication System" Height="800" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Main Content Area -->
+        <StackPanel Grid.Column="0" Margin="20">
+            <TextBlock Text="Patient Medication System" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <!-- Current State Display -->
+            <GroupBox Header="Current Status" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock x:Name="InstructionText" Text="Place rotate marker to begin" FontSize="16" Margin="10"/>
+                    <TextBlock x:Name="ModeText" Text="Mode: Idle" FontSize="14" Margin="10"/>
+                    <TextBlock x:Name="SelectedMedText" Text="Selected: —" FontSize="14" Margin="10"/>
+                    <TextBlock x:Name="NextDoseText" Text="No upcoming doses" FontSize="14" Margin="10" FontWeight="Bold"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Medication Wheel -->
+            <Canvas x:Name="WheelCanvas" Width="420" Height="420" Background="LightGray" 
+                    Visibility="Collapsed" HorizontalAlignment="Center">
+                <!-- Wheel will be drawn programmatically -->
+            </Canvas>
+
+            <!-- Confirmation Popup -->
+            <Border x:Name="Popup" Visibility="Collapsed" Background="White" BorderBrush="Black" 
+                    BorderThickness="2" Padding="20" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <StackPanel>
+                    <TextBlock x:Name="PopupText" Text="Did you take the medication?" FontSize="18" 
+                               FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="BtnYes" Content="YES" Width="80" Height="40" 
+                                Background="LightGreen" Margin="10" Click="BtnYes_Click"/>
+                        <Button x:Name="BtnNo" Content="NO" Width="80" Height="40" 
+                                Background="LightCoral" Margin="10" Click="BtnNo_Click"/>
+                    </StackPanel>
+                    <TextBlock Text="Or use rotate marker: left side = YES, right side = NO" 
+                               FontSize="12" Margin="0,10,0,0" TextAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- Right Panel -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <!-- Medication History -->
+            <GroupBox Header="Medication History" Margin="0,0,0,10">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button x:Name="ClearHistoryBtn" Content="Clear History" 
+                                Click="ClearHistory_Click" Margin="0,0,10,0"/>
+                        <Button x:Name="ExportHistoryBtn" Content="Export History" 
+                                Click="ExportHistory_Click"/>
+                    </StackPanel>
+                    <ListBox x:Name="HistoryList" Height="200" FontFamily="Consolas" FontSize="10"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Activity Log -->
+            <GroupBox Header="Activity Log" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock x:Name="StatusText" Text="Disconnected" Margin="5" Foreground="Red"/>
+                    <ListBox x:Name="LogList" Height="300" FontFamily="Consolas" FontSize="10"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

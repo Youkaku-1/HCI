@@ -1,0 +1,14 @@
+[
+  {
+    "MedicationName": "Lisinopril",
+    "TimeTaken": "2025-11-01T22:31:13.6832349+02:00",
+    "NextDoseTime": "2025-11-02T10:31:13.6832355+02:00",
+    "Taken": true
+  },
+  {
+    "MedicationName": "Lisinopril",
+    "TimeTaken": "2025-11-01T22:31:17.7420109+02:00",
+    "NextDoseTime": "2025-11-02T10:31:17.7420155+02:00",
+    "Taken": true
+  }
+]
